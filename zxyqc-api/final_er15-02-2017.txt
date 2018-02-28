@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"76","description":"dff","ship_qty":5,"partial_ship_qty":1,"type_of_inspection":"2","inspection_start_time":"1970-01-01T10:04:00.000Z","inspection_finish_time":"1970-01-01T10:00:00.000Z","reach":1,"oeko_tex":1,"aql":1.5,"acceptable_major":5,"sample_size":"g","acceptable_minor":2,"reject_major":5,"reject_minor":2,"latitude":23.8138154,"longitude":90.4134385}

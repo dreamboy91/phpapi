@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"78","latitude":23.8138154,"longitude":90.4134385,"description":"vvv","ship_qty":999,"partial_ship_qty":1,"type_of_inspection":"2","reach":1,"oeko_tex":1,"aatc":1,"aql":8,"sample_size":"c","acceptable_major":88,"acceptable_minor":88,"reject_major":5,"reject_minor":8,"totalMajor":0,"totalMinor":0,"inspection_finish_time":"2017-02-27T05:33:28.172Z"}

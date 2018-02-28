@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"392","latitude":23.8127476,"longitude":90.4129598,"description":"xc","qty_cut":8,"qty_stitched":8,"qty_emb":5,"qty_finished":5,"qty_packed":8,"qty_checked":5,"totalMajor":0,"totalMinor":0}

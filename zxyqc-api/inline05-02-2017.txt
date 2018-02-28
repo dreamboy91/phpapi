@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"76","description":"evvv","qty_cut":8,"qty_stitched":8,"qty_emb":55,"qty_finished":5,"qty_packed":85,"qty_checked":88,"fabric":{"0":{"comments":"Ccv","major":88,"minor":85,"corrective_action":"Cf","responsible":"f"}},"comments":"Bb","totalMajor":88,"totalMinor":85,"latitude":"23.8138154","longitude":"90.4134294"}

@@ -1,0 +1,54 @@
+services:
+  dispatcher:
+    class: Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher
+    arguments: ['@service_container']
+
+  app.exception_subscriber:
+    class: Symfony\Component\HttpKernel\EventListener\ExceptionListener
+    arguments: ['Framework\Controller\ErrorController::exception']
+    tags:
+        - { name: kernel.event_subscriber }
+
+  router_listener:
+    class: Symfony\Component\HttpKernel\EventListener\RouterListener
+    arguments: ['@routing.matcher']
+    tags:
+      - { name: kernel.event_subscriber }
+
+  request.context:
+    class: Symfony\Component\Routing\RequestContext
+    public: false
+
+  routing.matcher:
+    class: Symfony\Component\Routing\Matcher\UrlMatcher
+    arguments: ['@routing.collection', '@request.context']
+    public: false
+
+  routing.collection:
+    class: Framework\Routing\RouteCollection
+    arguments: [%_routes%]
+    public: false
+
+  app.api_key.action_listener:
+      class: Framework\Listener\ApiKeyListener
+      arguments: ['%api_keys%']
+      tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+  app.tokens.action_listener:
+      class: Framework\Listener\TokenListener
+      arguments: ['@service.authentication_provider']
+      tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+  service.authentication_provider:
+      class: Framework\Service\AuthenticationProvider
+      arguments: ['%secret%', '%api_keys%']
+
+  dba:
+    class: PDO
+    arguments: [%database_dns%, %database_user%, %database_password%]
+
+  entity_manager_factory:
+    class: Framework\Factory\EntityManager
+    arguments: ['@dba']

@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"296","latitude":23.8142357,"longitude":90.4126653,"aql":1.8,"cut_quantity":5,"emb_print":8,"stitched_qty":5,"finished_qty":2,"packed_qty":5,"checked_qty":2,"item":"ccf","process":1,"fabric":{"0":{"critical":"cc","description":"ff"}},"totalMajor":0,"totalMinor":0,"color":"BLACK,GREY MARLE"}

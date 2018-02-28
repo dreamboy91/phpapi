@@ -1,0 +1,224 @@
+sample_checklist:
+  pattern: /sample-checklist/{limit}
+  defaults:
+    _controller: Controller\SampleChecklist::index
+  requirements: { _method: GET }
+
+sample_checklist_save:
+  pattern: /sample-checklists-save
+  defaults:
+    _controller: Controller\SampleChecklist::save
+  requirements: { _method: POST }
+
+sample_checklist_details:
+  pattern: /sample-checklist-details
+  defaults:
+    _controller: Controller\SampleChecklist::details
+  requirements: { _method: POST}
+
+inspection_checklist_index:
+  pattern: /inspection-checklists/{limit}
+  defaults:
+    _controller: Controller\InlineInspectionController::index
+  requirements: { _method: GET }
+
+inspection_checklist_save:
+  pattern: /inspection-checklists-save
+  defaults:
+    _controller: Controller\InlineInspectionController::save
+  requirements: { _method: POST }
+
+inspection_checklist_details:
+  pattern: /inspection-checklists-details
+  defaults:
+    _controller: Controller\InlineInspectionController::details
+  requirements: { _method: POST }
+
+iqa_inline_audit_index:
+  pattern: /iqa-inline-audit/{limit}
+  defaults:
+    _controller: Controller\IqaInlineAuditController::index
+  requirements: { _method: GET }
+
+iqa_inline_audit_save:
+  pattern: /iqa-inline-audit-save
+  defaults:
+    _controller: Controller\IqaInlineAuditController::save
+  requirements: { _method: POST }
+
+iqa_inline_audit_details:
+  pattern: /iqa-inline-audit-details
+  defaults:
+    _controller: Controller\IqaInlineAuditController::details
+  requirements: { _method: POST }
+
+daily_washing_index:
+  pattern: /daily-washing/{limit}
+  defaults:
+    _controller: Controller\DailyWashingController::index
+  requirements: { _method: GET }
+
+daily_washing_save:
+  pattern: /daily-washing-save
+  defaults:
+    _controller: Controller\DailyWashingController::save
+  requirements: { _method: POST }
+
+daily_washing_details:
+  pattern: /daily-washing-details
+  defaults:
+    _controller: Controller\DailyWashingController::details
+  requirements: { _method: POST}
+
+final_inspection_index:
+  pattern: /final-inspection/{limit}
+  defaults:
+    _controller: Controller\FinalInspectionController::index
+  requirements: { _method: GET }
+
+final_inspection_save:
+  pattern: /final-inspection-save
+  defaults:
+    _controller: Controller\FinalInspectionController::save
+  requirements: { _method: POST }
+
+final_inspection_details:
+  pattern: /final-inspection-details
+  defaults:
+    _controller: Controller\FinalInspectionController::details
+  requirements: { _method: POST}
+
+packing_accuracy_index:
+  pattern: /packing-accuracy/{limit}
+  defaults:
+    _controller: Controller\PackingAccuracyController::index
+  requirements: { _method: GET }
+
+packing_accuracy_save:
+  pattern: /packing-accuracy-save
+  defaults:
+    _controller: Controller\PackingAccuracyController::save
+  requirements: { _method: POST }
+
+packing_accuracy_details:
+  pattern: /packing-accuracy-details
+  defaults:
+    _controller: Controller\PackingAccuracyController::details
+  requirements: { _method: POST }
+
+weekly_fire_safety_checklist_index:
+  pattern: /weekly-fire-safety-checklist/{limit}
+  defaults:
+    _controller: Controller\WeeklyFireSafetyChecklistController::index
+  requirements: { _method: GET }
+
+weekly_fire_safety_checklist_save:
+  pattern: /weekly-fire-safety-checklist-save
+  defaults:
+    _controller: Controller\WeeklyFireSafetyChecklistController::save
+  requirements: { _method: POST }
+
+weekly_fire_safety_checklist_details:
+  pattern: /weekly-fire-safety-checklist-details
+  defaults:
+    _controller: Controller\WeeklyFireSafetyChecklistController::details
+  requirements: { _method: POST }
+
+size_measurement_index:
+  pattern: /size-measurement/{limit}
+  defaults:
+    _controller: Controller\SizeMeasurementController::index
+  requirements: { _method: GET }
+
+size_measurement_save:
+  pattern: /size-measurement-save
+  defaults:
+    _controller: Controller\SizeMeasurementController::save
+  requirements: { _method: POST }
+
+size_measurement_details:
+  pattern: /size-measurement-details
+  defaults:
+    _controller: Controller\SizeMeasurementController::details
+  requirements: { _method: POST }
+
+sample_review_index:
+  pattern: /sample-review/{limit}
+  defaults:
+    _controller: Controller\SampleReviewController::index
+  requirements: { _method: GET }
+
+sample_review_save:
+  pattern: /sample-review-save
+  defaults:
+    _controller: Controller\SampleReviewController::save
+  requirements: { _method: POST }
+
+sample_review_details:
+  pattern: /sample-review-details
+  defaults:
+    _controller: Controller\SampleReviewController::details
+  requirements: { _method: POST }
+
+pre_production_index:
+  pattern: /pre-production/{limit}
+  defaults:
+    _controller: Controller\PreProductionController::index
+  requirements: { _method: GET }
+
+pre_production_save:
+  pattern: /pre-production-save
+  defaults:
+    _controller: Controller\PreProductionController::save
+  requirements: { _method: POST }
+
+pre_production_details:
+  pattern: /pre-production-details
+  defaults:
+    _controller: Controller\PreProductionController::details
+  requirements: { _method: POST }
+
+technical_evaluation_index:
+  pattern: /technical-evaluation/{limit}
+  defaults:
+    _controller: Controller\TechnicalEvaluationController::index
+  requirements: { _method: GET }
+
+technical_evaluation_save:
+  pattern: /technical-evaluation-save
+  defaults:
+    _controller: Controller\TechnicalEvaluationController::save
+  requirements: { _method: POST }
+
+technical_evaluation_details:
+  pattern: /technical-evaluation-details
+  defaults:
+    _controller: Controller\TechnicalEvaluationController::details
+  requirements: { _method: POST}
+
+photo_save:
+    pattern: /final-inspection-photo-upload
+    defaults:
+      _controller: Controller\FinalInspectionController::photoSave
+    requirements: { _method: POST }
+
+inline_photo_save:
+    pattern: /inline-inspection-photo-upload
+    defaults:
+      _controller: Controller\InlineInspectionController::photoSave
+    requirements: { _method: POST }
+hello_index:
+  pattern: /hello-checklist
+  defaults:
+    _controller: Controller\Hello::index
+  requirements: { _method: GET }
+
+hello_save:
+    pattern: /hello-save
+    defaults:
+      _controller: Controller\Hello::save
+    requirements: { _method: POST }
+
+
+
+

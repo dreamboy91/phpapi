@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"392","latitude":23.8142357,"longitude":90.4126653,"pack_qty":1,"partial_ship_qty":1,"totalMajor":0,"totalMinor":0,"inspection_finish_time":"2017-07-18T04:04:54.539Z"}

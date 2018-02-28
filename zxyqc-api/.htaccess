@@ -1,0 +1,19 @@
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, X-API-KEY, X-AUTH-TOKEN, accept"
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+
+    RewriteRule /?vendor/ - [F,L]
+    RewriteRule /?\.htaccess$ - [F,L]
+    RewriteRule /?\.gitignore$ - [F,L]
+    RewriteRule /?composer\. - [F,L]
+    RewriteRule /?README\.md$ - [F,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+umask(0000);
+
+set_time_limit(0);
+
+include_once (__DIR__ . "/../vendor/autoload.php");
+
+use Symfony\Component\Console\Input\ArgvInput,
+    Framework\ConsoleApplication;
+
+$input = new ArgvInput();
+
+$application = new ConsoleApplication(new AppKernel());
+$application->run($input);

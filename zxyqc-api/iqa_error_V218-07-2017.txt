@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"296","latitude":23.8142357,"longitude":90.4126653,"aql":1.5,"cut_quantity":88,"emb_print":5,"stitched_qty":5,"packed_qty":2,"finished_qty":5,"checked_qty":2,"process":1,"result":"1","totalMajor":0,"totalMinor":0,"color":"WHITE,GREY MARLE"}

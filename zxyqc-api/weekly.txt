@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"31","latitude":23.813798,"longitude":90.4133373,"item":"Sweater","fire_renew":"2017-04-26T18:00:00.000Z","question":{"0":{"date_of_inspection":"2017-04-26T18:00:00.000Z","select_building_floor":"GROUND"}}}

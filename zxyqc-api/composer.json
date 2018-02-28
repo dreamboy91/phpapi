@@ -1,0 +1,51 @@
+{
+  "name": "l2n/zxy-qc-api",
+  "type": "Project",
+  "description": "A lightweight PHP drop-in API service layer for ZXY QC Mobile App powered by Symfony2",
+  "authors": [
+    {
+      "name": "Roni Saha",
+      "email": "roni.cse@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "incenteev/composer-parameter-handler": "~2.0",
+    "firebase/php-jwt": "~4.0",
+    "symfony/dependency-injection": "<2.4",
+    "symfony/http-foundation": "<2.4",
+    "symfony/yaml": "<2.4",
+    "symfony/config": "<2.4",
+    "symfony/event-dispatcher": "<2.4",
+    "symfony/http-kernel": "<2.4",
+    "symfony/routing": "<2.4",
+    "symfony/finder": "<2.4",
+    "symfony/console": "<2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "": ["src/", "libs/"]
+    },
+    "files": [
+      "app/AppKernel.php"
+    ]
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+    ],
+    "post-update-cmd": [
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+    ]
+  },
+  "minimum-stability": "stable",
+  "extra": {
+    "incenteev-parameters": {
+      "file": "app/config/parameters.yml"
+    },
+    "branch-alias": {
+      "dev-master": "1.0"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"78","latitude":23.8138154,"longitude":90.4134385,"description":"cff","ship_qty":55,"partial_ship_qty":1,"type_of_inspection":"2","reach":1,"oeko_tex":1,"aql":1.9,"sample_size":"df","acceptable_major":5,"acceptable_minor":1,"reject_major":12,"reject_minor":5,"totalMajor":0,"totalMinor":0,"accepted":"3"}

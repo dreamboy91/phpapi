@@ -1,0 +1,8 @@
+parameters:
+  database_dns: mysql:host=localhost;dbname=testdb;charset=utf8
+  database_user: root
+  database_password: ~
+  secret: ThisTokenIsNotSoSecretChangeIt
+  api_keys:
+    - ThisKeyIsNotSoSecretChangeIt1
+    - ThisKeyIsNotSoSecretChangeIt2

@@ -1,0 +1,7 @@
+services:
+
+  user_model:
+    class: Model\UserRepository
+    factory_service: entity_manager_factory
+    factory_method: getRepository
+    arguments: ['Entity\User']

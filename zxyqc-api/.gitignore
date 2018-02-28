@@ -1,0 +1,12 @@
+### Symfony template
+# Parameters
+/app/config/parameters.yml
+
+/vendor/
+
+# Composer PHAR
+/composer.phar
+
+/composer.lock
+/app/cache/
+/api/

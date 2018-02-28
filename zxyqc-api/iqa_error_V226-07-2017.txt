@@ -1,0 +1,1 @@
+{"latitude":"23.81275","longitude":"90.4120762","images":[],"ref_id":"398","aql":1.5,"cut_quantity":2,"emb_print":2,"stitched_qty":2,"finished_qty":2,"packed_qty":2,"checked_qty":2,"process":1,"totalMajor":0,"totalMinor":0,"color":"Color"}

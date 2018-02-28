@@ -1,0 +1,199 @@
+<?php
+
+namespace Controller;
+
+use Framework\Controller\AppBaseController;
+use Framework\Controller\TokenAuthenticatedController;
+use Helper\FileUtil;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
+class PackingAccuracyController extends AppBaseController implements TokenAuthenticatedController
+{
+
+    public function indexAction()
+    {
+        $sql= "SELECT
+  quality_assignment_tbl.id AS id,
+  bc_tbl.`ol_name` AS customer,
+  ofc_tbl.`ol_name` AS `factory`,
+  IF(
+    style_tbl.`name` != '',
+    style_tbl.`name`,
+    '---'
+  ) AS `style`,
+
+   IF(
+    style_tbl.`main_source_ref` != '',
+    style_tbl.`main_source_ref`,
+    '---'
+  ) AS `style_reference`,
+  bpo_tbl.`bpo_ref_no` AS po,
+  IF(
+    bpo_tbl.`total_qty` != '',
+    bpo_tbl.`total_qty`,
+    '---'
+  ) AS quantity,
+  IF(
+    style_tbl.`fabric` != '',
+    style_tbl.`fabric`,
+    '---'
+  ) AS `fabric`,
+  IF(
+    style_tbl.`color` != '',
+    style_tbl.`color`,
+    '---'
+  ) AS `colors`,
+  IF(
+    style_tbl.`size` != '',
+    style_tbl.`size`,
+    '---'
+  ) AS `sizes`,
+  IF(
+    option_brand_name.name != '',
+    option_brand_name.name,
+    '---'
+  ) AS brand,
+  quality_assignment_tbl.`packing_accuracy_due_date` AS `date`,
+  bu_qam_tbl.userid AS bu_qam,
+  (SELECT
+  COUNT(packing_accuracy_Ptbl.id) AS id
+FROM
+  `packing_accuracy_Ptbl`
+   WHERE packing_accuracy_Ptbl.ref_id=  quality_assignment_tbl.id) AS ref_count
+FROM
+  quality_assignment_tbl
+  LEFT JOIN `contact_info`
+    ON quality_assignment_tbl.packing_accuracy_assign_to = contact_info.id
+  LEFT JOIN company_tbl AS ofc_tbl
+    ON ofc_tbl.id = quality_assignment_tbl.select_factory
+  LEFT JOIN fpo_tbl
+    ON fpo_tbl.`id` = quality_assignment_tbl.`select_po`
+  LEFT JOIN fpo_details
+    ON fpo_tbl.id = fpo_details.group_ref
+  LEFT JOIN bpo_tbl
+    ON (bpo_tbl.id = fpo_details.bpo_ref)
+  LEFT JOIN style_tbl
+    ON style_tbl.`id` = quality_assignment_tbl.`select_style`
+  INNER JOIN company_tbl AS bc_tbl
+    ON (bc_tbl.id = fpo_tbl.`buyer`)
+  LEFT JOIN brand AS brand_tbl
+    ON (
+      bc_tbl.id = brand_tbl.`company_id`
+    )
+  LEFT JOIN `option_details` AS option_brand_name
+    ON (
+      option_brand_name.id = brand_tbl.`brand`
+    )
+  LEFT JOIN `system_user` AS bu_qam_tbl
+    ON (
+      bu_qam_tbl.`contact_id` = quality_assignment_tbl.`entryby`
+    )
+WHERE quality_assignment_tbl.packing_accuracy_assign_to =?
+GROUP BY quality_assignment_tbl.id ";
+
+
+        $packing_accuracy = $this->getRepository()->getResults($sql, array($this->getUser()->contact_id));
+
+        return new JsonResponse($packing_accuracy);
+    }
+
+    public function saveAction(Request $request) {
+        $data = json_decode($request->getContent(),true);
+        //file_put_contents('packing.txt', $request->getContent());
+        //return new JsonResponse($data);
+      $parent_tbl = array(
+          'status' => 2,
+          'ref_id' => '',
+          'order_hangtag_position' => '',
+          'order_qty_per_carton' => '',
+          'order_sell_price' => '',
+          'comments' => '',
+          'latitude' => '',
+          'longitude' => ''
+
+      );
+      foreach ($parent_tbl as $key => $_d) {
+        if (!isset($data[$key])) {
+          continue;
+        }
+        $parent_tbl[$key] = $data[$key];
+      }
+      $parent_tbl['entryby'] = $this->getUser()->contact_id;
+      $parent_tbl = array_filter($parent_tbl);
+
+            $whereArray = array();
+            foreach ($parent_tbl as $key => $value) {
+              $whereArray["$key=?"] = $value;
+            }
+
+            if ($this->getRepository()->from('packing_accuracy_Ptbl')->findBy($whereArray)->rowCount() > 0) {
+              return new JsonResponse(array('error' => 409), 409);
+            }
+
+      $parent_tbl['entrytime'] = date('Y-m-d H:i:s');
+      $id = $this->getRepository()->from('packing_accuracy_Ptbl')->insert($parent_tbl);
+
+      foreach ($data['carton_marking'] as $key => $value) {
+        $this->insertIntoSizeMeasurementInspectionDescTbl($id, $value);
+      }
+
+      $this->uploadImage($id, $data);
+
+      return new JsonResponse(array(
+              'id' => $id)
+      );
+    }
+
+  /**
+   * @param $id
+   * @param $data
+   * @return string
+   * @throws \Exception
+   */
+  public function uploadImage($id, $data)
+  {
+    if (!isset($data['images']) || empty($data['images'])) {
+      return;
+    }
+
+    $photos = FileUtil::uploadFileFromDataUrls(
+        realpath(WEB_DIR . "/../mis/images/packing_accuracy_photo/"),
+        "{$id}_packing_accuracy_photo_",
+        $data['images']
+    );
+
+    $this->getRepository()->from('packing_accuracy_Ptbl')->update(array(
+        'photo' => implode(',', $photos)
+    ), array('id=?' => $id));
+  }
+
+  protected function insertIntoSizeMeasurementInspectionDescTbl($id, $data)
+  {
+
+    $data['packing_accuracy_ptbl_id'] = $id;
+    $this->getRepository()->from('packing_accuracy_child_tbl')->insert($data);
+  }
+
+    public function detailsAction(Request $request)
+    {
+        $detailsFor= json_decode($request->getContent(), true);
+        $sql= "SELECT
+  packing_accuracy_Ptbl.id,
+  DATE_FORMAT(packing_accuracy_Ptbl.entrytime,'%d-%m-%Y %h:%i %p')AS entrytime,
+  quality_assignment_tbl.`daily_washing_report_due_date` AS `date`
+FROM
+  `packing_accuracy_Ptbl`
+  LEFT JOIN quality_assignment_tbl
+    ON (
+      packing_accuracy_Ptbl.`ref_id` = quality_assignment_tbl.id
+    )
+WHERE packing_accuracy_Ptbl.ref_id = ?";
+
+        $packing_accuracy_details = $this->getRepository()->getResults($sql, array($detailsFor));
+        return new JsonResponse(array(
+            'details_list' => $packing_accuracy_details
+        ));
+
+    }
+}

@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"78","description":"d","ship_qty":2,"partial_ship_qty":1,"type_of_inspection":"2","reach":1,"azo":0,"aql":1.6,"sample_size":"f","acceptable_major":5,"acceptable_minor":55,"reject_major":5,"reject_minor":2,"totalMajor":0,"totalMinor":0,"accepted":"3","comments":"Vbb","latitude":23.8138155,"longitude":90.4134383}

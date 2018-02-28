@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"77","description":"qxc","qty_cut":12,"qty_stitched":0,"qty_emb":8,"qty_finished":2,"qty_packed":8,"qty_checked":2,"totalMajor":0,"totalMinor":0,"note":"utpaul"}

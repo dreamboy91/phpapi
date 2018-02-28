@@ -1,0 +1,1 @@
+{"images":[],"latitude":"23.81275","longitude":"90.4120762","ref_id":"397","pack_qty":106,"partial_ship_qty":1,"type_of_inspection":"1","reach":1,"oeko_tex":1,"totalMajor":0,"totalMinor":0,"inspection_finish_time":"2017-07-25T05:37:23.825Z"}

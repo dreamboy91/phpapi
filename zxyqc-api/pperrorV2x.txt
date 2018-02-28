@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"392","latitude":23.8138396,"longitude":90.4133811,"relaxation_time":"f","color":"PURPLE,FUCSIA,CHARCOAL"}

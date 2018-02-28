@@ -1,0 +1,12 @@
+secure_page:
+  pattern: /hello
+  defaults:
+    _controller: Controller\Hello::index
+  requirements: { _method: GET }
+
+home_page:
+  pattern: /hello/{name}
+  defaults:
+    _controller: Controller\DefaultController::index
+  requirements: { _method: GET }
+

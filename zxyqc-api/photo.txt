@@ -1,0 +1,1 @@
+{"sample_size":80,"acceptable_major":5,"acceptable_minor":6,"reject_major":6,"reject_minor":7,"images":[],"latitude":"23.8138042","longitude":"90"}

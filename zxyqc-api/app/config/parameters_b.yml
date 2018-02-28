@@ -1,0 +1,9 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_dns: mysql:host=localhost;dbname=zxy_mis;charset=utf8
+    database_user: zxy_mis
+    database_password: 'Ded@ZXY2013d'
+    secret: imbusy
+    api_keys:
+        - ThisKeyIsNotSoSecretChangeIt1
+        - ThisKeyIsNotSoSecretChangeIt2

@@ -1,0 +1,1 @@
+{"images":[],"ref_id":"4","latitude":23.8142357,"longitude":90.4126653,"item":"Knit","fire_renew":"2017-07-11T18:00:00.000Z","fire_validity":"2017-07-11T18:00:00.000Z","fireComment":"ffggg","boiler_renew":"2017-07-11T18:00:00.000Z","question":{"0":{"select_building_floor":"GROUND","licence_condition":"Yes","boiler_facility":"No"}}}
